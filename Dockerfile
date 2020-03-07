@@ -7,5 +7,6 @@ RUN cp target/x86_64-unknown-linux-musl/release/vsms /build-out/
 
 FROM scratch
 
+COPY --from=builder /etc/ssl/certs/ca-certificates.crt /etc/ssl/certs/
 COPY --from=build /build-out/vsms /
 ENTRYPOINT ["/vsms"]
