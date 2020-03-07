@@ -1,0 +1,60 @@
+kind: ConfigMap
+apiVersion: v1
+metadata:
+  name: vsms-conf
+  namespace: vsms
+data:
+  AGENT_ID: "We_Will_Fix_Your_PC_agent"
+  CLIENT_ID: "vsms"
+  OAUTH_WELL_KNOWN: "https://account.cardifftec.uk/auth/realms/wwfypc/.well-known/openid-configuration"
+  SERVICE_ACCOUNT_KEY: "/keys/service-account.json"
+  PRIVATE_KEY: "/keys/private.pem"
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: vsms
+  namespace: vsms
+  labels:
+    app: vsms
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: vsms
+  template:
+    metadata:
+      labels:
+        app: vsms
+    spec:
+      volumes:
+        - name: keys
+          secret:
+            secretName: keys
+      containers:
+        - name: vsms
+          image: theenbyperor/wwfypc-vsms:(version)
+          imagePullPolicy: Always
+          volumeMounts:
+            - mountPath: /keys
+              name: keys
+              readOnly: true
+          ports:
+            - containerPort: 3000
+          envFrom:
+            - configMapRef:
+                name: vsms-conf
+---
+apiVersion: v1
+kind: Service
+metadata:
+  namespace: vsms
+  name: vsms
+  labels:
+    app: vsms
+spec:
+  selector:
+    app: vsms
+  ports:
+    - port: 3000
+      targetPort: 3000

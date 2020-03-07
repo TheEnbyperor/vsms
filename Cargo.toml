@@ -8,8 +8,8 @@ edition = "2018"
 
 [dependencies]
 actix-web = "1.0"
-actix-web-async-await = { path = "../actix-web-async-await" }
-rust-keycloak = { path = "../rust-keycloak" }
+actix-web-async-await = { git = "https://github.com/TheEnbyperor/actix-web-async-await" }
+rust-keycloak = { git = "https://github.com/TheEnbyperor/rust-keycloak" }
 openssl = "0.10"
 failure = "0.1"
 sentry = "0.17"

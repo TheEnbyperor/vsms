@@ -357,7 +357,7 @@ fn main() {
     server = if let Some(l) = listenfd.take_tcp_listener(0).unwrap() {
         server.listen(l).unwrap()
     } else {
-        server.bind("127.0.0.1:3000").unwrap()
+        server.bind("[::]:3000").unwrap()
     };
 
     server.start();

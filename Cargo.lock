@@ -252,6 +252,7 @@ dependencies = [
 [[package]]
 name = "actix-web-async-await"
 version = "0.2.0"
+source = "git+https://github.com/TheEnbyperor/actix-web-async-await#219f78ddc67f92bbc27cf56051f2cc817c0b972e"
 dependencies = [
  "actix-web 1.0.9 (registry+https://github.com/rust-lang/crates.io-index)",
  "futures 0.1.29 (registry+https://github.com/rust-lang/crates.io-index)",
@@ -1824,6 +1825,7 @@ dependencies = [
 [[package]]
 name = "rust-keycloak"
 version = "0.1.0"
+source = "git+https://github.com/TheEnbyperor/rust-keycloak#0106f16c1d240e46cfe3aefe55c8186ba9db7d37"
 dependencies = [
  "actix-web 1.0.9 (registry+https://github.com/rust-lang/crates.io-index)",
  "alcoholic_jwt 1.0.0 (registry+https://github.com/rust-lang/crates.io-index)",
@@ -2505,7 +2507,7 @@ version = "0.1.0"
 dependencies = [
  "actix 0.8.3 (registry+https://github.com/rust-lang/crates.io-index)",
  "actix-web 1.0.9 (registry+https://github.com/rust-lang/crates.io-index)",
- "actix-web-async-await 0.2.0",
+ "actix-web-async-await 0.2.0 (git+https://github.com/TheEnbyperor/actix-web-async-await)",
  "base64 0.11.0 (registry+https://github.com/rust-lang/crates.io-index)",
  "dotenv 0.9.0 (registry+https://github.com/rust-lang/crates.io-index)",
  "failure 0.1.6 (registry+https://github.com/rust-lang/crates.io-index)",
@@ -2521,7 +2523,7 @@ dependencies = [
  "pretty_env_logger 0.3.1 (registry+https://github.com/rust-lang/crates.io-index)",
  "regex 1.3.3 (registry+https://github.com/rust-lang/crates.io-index)",
  "reqwest 0.9.24 (registry+https://github.com/rust-lang/crates.io-index)",
- "rust-keycloak 0.1.0",
+ "rust-keycloak 0.1.0 (git+https://github.com/TheEnbyperor/rust-keycloak)",
  "sentry 0.17.0 (registry+https://github.com/rust-lang/crates.io-index)",
  "serde 1.0.104 (registry+https://github.com/rust-lang/crates.io-index)",
  "serde_json 1.0.45 (registry+https://github.com/rust-lang/crates.io-index)",
@@ -2624,6 +2626,7 @@ dependencies = [
 "checksum actix-threadpool 0.1.2 (registry+https://github.com/rust-lang/crates.io-index)" = "6b5ae85d13da7e6fb86b1b7bc83185e0e3bd4cc5f421c887e1803796c034d35d"
 "checksum actix-utils 0.4.7 (registry+https://github.com/rust-lang/crates.io-index)" = "908c3109948f5c37a8b57fd343a37dcad5bb1d90bfd06300ac96b17bbe017b95"
 "checksum actix-web 1.0.9 (registry+https://github.com/rust-lang/crates.io-index)" = "af3a1b967cdbacb903c4b9ae71257a7f098d881b25eb483d0c468b7dac579b03"
+"checksum actix-web-async-await 0.2.0 (git+https://github.com/TheEnbyperor/actix-web-async-await)" = "<none>"
 "checksum actix-web-codegen 0.1.3 (registry+https://github.com/rust-lang/crates.io-index)" = "068a33520e21c1eea89726be4d6b3ce2e6b81046904367e1677287695a043abb"
 "checksum actix_derive 0.4.0 (registry+https://github.com/rust-lang/crates.io-index)" = "0bf5f6d7bf2d220ae8b4a7ae02a572bb35b7c4806b24049af905ab8110de156c"
 "checksum adler32 1.0.4 (registry+https://github.com/rust-lang/crates.io-index)" = "5d2e7343e7fc9de883d1b0341e0b13970f764c14101234857d2ddafa1cb1cac2"
@@ -2799,6 +2802,7 @@ dependencies = [
 "checksum remove_dir_all 0.5.2 (registry+https://github.com/rust-lang/crates.io-index)" = "4a83fa3702a688b9359eccba92d153ac33fd2e8462f9e0e3fdf155239ea7792e"
 "checksum reqwest 0.9.24 (registry+https://github.com/rust-lang/crates.io-index)" = "f88643aea3c1343c804950d7bf983bd2067f5ab59db6d613a08e05572f2714ab"
 "checksum resolv-conf 0.6.2 (registry+https://github.com/rust-lang/crates.io-index)" = "b263b4aa1b5de9ffc0054a2386f96992058bb6870aab516f8cdeb8a667d56dcb"
+"checksum rust-keycloak 0.1.0 (git+https://github.com/TheEnbyperor/rust-keycloak)" = "<none>"
 "checksum rustc-demangle 0.1.16 (registry+https://github.com/rust-lang/crates.io-index)" = "4c691c0e608126e00913e33f0ccf3727d5fc84573623b8d65b2df340b5201783"
 "checksum rustc_version 0.2.3 (registry+https://github.com/rust-lang/crates.io-index)" = "138e3e0acb6c9fb258b19b67cb8abd63c00679d2851805ea151465464fe9030a"
 "checksum ryu 1.0.2 (registry+https://github.com/rust-lang/crates.io-index)" = "bfa8506c1de11c9c4e4c38863ccbe02a305c8188e85a05a784c9e11e1c3910c8"

@@ -1,0 +1,6 @@
+target
+private.pem
+public.der
+service-account.json
+.env
+Dockerfile

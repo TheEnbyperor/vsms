@@ -1,2 +1,6 @@
 /target
 **/*.rs.bk
+
+service-account.json
+private.pem
+public.der
