@@ -9,6 +9,7 @@ data:
   OAUTH_WELL_KNOWN: "https://account.cardifftec.uk/auth/realms/wwfypc/.well-known/openid-configuration"
   SERVICE_ACCOUNT_KEY: "/keys/service-account.json"
   PRIVATE_KEY: "/keys/private.pem"
+  RUST_LOG: "info"
 ---
 apiVersion: apps/v1
 kind: Deployment
@@ -44,6 +45,8 @@ spec:
           envFrom:
             - configMapRef:
                 name: vsms-conf
+            - secretRef:
+                name: keycloak
 ---
 apiVersion: v1
 kind: Service

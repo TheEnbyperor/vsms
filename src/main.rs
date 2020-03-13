@@ -201,14 +201,10 @@ struct UserKeyResponse {
 #[derive(Serialize)]
 struct StoreHashesHashes {
     values: Vec<String>,
-    #[serde(rename = "rateLimitTokens")]
-    rate_limit_tokens: Vec<String>
 }
 #[derive(Serialize)]
 struct StoreHashesRequest {
     hashes: StoreHashesHashes,
-    #[serde(rename = "publicKey")]
-    public_key: String,
 }
 
 async fn send_message(token: rust_keycloak::oauth::BearerAuthToken, data: web::Data<AppState>, message: web::Json<MessageData>) -> actix_web::Result<impl actix_web::Responder> {
@@ -270,20 +266,13 @@ async fn send_message(token: rust_keycloak::oauth::BearerAuthToken, data: web::D
                 hashes.push(make_hash(&sanitized_msg))
             }
 
-            let h = hkdf::Hkdf::<sha2::Sha256>::new(None, &shared_secret);
-            let mut rate_limit_token = [0u8; 32];
-            h.expand("xELpwbCabRriJEkOYBagfJpHrrmNqlaZMTxsacBQjsLjUHtQexWNQCiMCkrxBzWEifExJkkOJwOziTQQJyRWVUbauuCHZrYlenSAiqtKtT".as_bytes(), &mut rate_limit_token).unwrap();
-            let rate_limit_token = base64::encode_config(&rate_limit_token, base64::URL_SAFE);
-
-            let mut req = rust_keycloak::util::async_reqwest_to_error(client.post(&format!("https://verifiedsms.googleapis.com/v1/agents/{}:storeHashes", &data.agent_id))
+            let mut req = client.post(&format!("https://verifiedsms.googleapis.com/v1/agents/{}:storeHashes", &data.agent_id))
                 .json(&StoreHashesRequest {
                     hashes: StoreHashesHashes {
                         values: hashes,
-                        rate_limit_tokens: vec![rate_limit_token]
                     },
-                    public_key: base64::encode_config(&data.private_key.public_key_to_der().unwrap(), base64::URL_SAFE)
                 })
-                .bearer_auth(&data.api_key.key())).await?;
+                .bearer_auth(&data.api_key.key()).send().compat().await.unwrap();
             println!("{:?}", req.text().compat().await);
         },
         None => {}
