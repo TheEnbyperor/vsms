@@ -266,13 +266,13 @@ async fn send_message(token: rust_keycloak::oauth::BearerAuthToken, data: web::D
                 hashes.push(make_hash(&sanitized_msg))
             }
 
-            let mut req = client.post(&format!("https://verifiedsms.googleapis.com/v1/agents/{}:storeHashes", &data.agent_id))
+            let mut req = rust_keycloak::util::async_reqwest_to_error(client.post(&format!("https://verifiedsms.googleapis.com/v1/agents/{}:storeHashes", &data.agent_id))
                 .json(&StoreHashesRequest {
                     hashes: StoreHashesHashes {
                         values: hashes,
                     },
                 })
-                .bearer_auth(&data.api_key.key()).send().compat().await.unwrap();
+                .bearer_auth(&data.api_key.key())).await?;
             println!("{:?}", req.text().compat().await);
         },
         None => {}
