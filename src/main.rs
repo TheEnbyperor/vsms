@@ -220,7 +220,7 @@ async fn send_message(token: rust_keycloak::oauth::BearerAuthToken, data: web::D
     let number_str = phonenumber::format(&number).mode(phonenumber::Mode::E164).to_string();
 
     let client = reqwest::r#async::Client::new();
-    let mut req = rust_keycloak::util::async_reqwest_to_error(client.post("https://verifiedsms.googleapis.com/v1/userKeys:batchGet")
+    let mut req = rust_keycloak::util::async_reqwest_to_error(client.post("https://verifiedsms.googleapis.com/v1/enabledUserKeys:batchGet")
         .json(&UserKeyRequest {
             phone_numbers: vec![number_str.clone()]
         })
